@@ -2,7 +2,7 @@
 
 This project is a Java-based simulation engine designed to model and optimize the formation of insect swarms. It utilizes a modular architecture to calculate collective features, apply behavioral rules, and find the most efficient combination of entities to complete specific environmental tasks.
 
-## ## Core Architecture
+## Core Architecture
 
 The simulation is built on several key components that define how insects interact and aggregate their capabilities:
 
@@ -19,34 +19,27 @@ The simulation is built on several key components that define how insects intera
 
 
 
-## ## Advanced Features
+## Advanced Features
 
-### ### Optimization Engine
+### Optimization Engine
 
 The `SwarmFactory` uses a power-set approach (bitmasking) to evaluate all possible combinations ($2^n$) of available insects. It filters these candidates using a `TaskEvaluator` and selects the "best" swarm based on a surplus-scoring heuristic relative to the task requirements.
 
-### ### Adaptive Behavior
+### Adaptive Behavior
 
 The `AdaptiveSwarm` implementation integrates the **Observer Pattern**. It can listen for environmental events, such as an "Obstacle," and respond by injecting new rules and reapplying its logic to adapt its features in real-time.
 
-## ## Design Patterns Used
+### Design Patterns Used
 
 | Pattern | Implementation |
-| --- | --- |
-| **Builder** | <br>`SwarmBuilder` provides a fluid interface for constructing swarms and applying rules.
+| :--- | :--- |
+| **Builder** | `SwarmBuilder` provides a fluid interface for constructing swarms and applying rules. |
+| **Strategy** | `RuleSelectionStrategy` allows for different logic in choosing which rules to apply to a task. |
+| **Observer** | `EnvironmentObserver` enables `AdaptiveSwarm` to react to external triggers. |
+| **Composite** | `Swarm` acts as an `Entity` while containing a collection of other `Entity` objects. |
 
- |
-| **Strategy** | <br>`RuleSelectionStrategy` allows for different logic in choosing which rules to apply to a task.
 
- |
-| **Observer** | <br>`EnvironmentObserver` enables `AdaptiveSwarm` to react to external triggers.
-
- |
-| **Composite** | <br>`Swarm` acts as an `Entity` while containing a collection of other `Entity` objects.
-
- |
-
-## ## Quick Start
+## Quick Start
 
 The main entry point is located in `ColonySim.java`.
 
